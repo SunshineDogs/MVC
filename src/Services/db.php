@@ -7,7 +7,14 @@ class db
     private $pdo;
     public function __construct()
     {
-        $dbOptions = (require 'src/settings.php')['db'];
+        $dbOptions = ([
+    'db' => [
+        'host' => 'localhost',
+        'dbname' => 'mod_mvc',
+        'user' => 'mysql',
+        'password' => 'mysql',
+    ]
+];)['db'];
         $this->pdo = new \PDO(
             'mysql:host=' . $dbOptions['host'] . ';dbname=' . $dbOptions['dbname'],
             $dbOptions['user'],
