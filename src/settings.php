@@ -2,9 +2,9 @@
 
 return [
     'db' => [
-        'host' => 'localhost',
-        'dbname' => 'mod_mvc',
-        'user' => 'mysql',
-        'password' => 'mysql',
+        'host' => 'mysql101.1gb.ru',
+        'dbname' => 'gb_testmvc',
+        'user' => 'gb_testmvc',
+        'password' => '6adz8d65uiw',
     ]
 ];
