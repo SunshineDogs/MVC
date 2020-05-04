@@ -7,18 +7,6 @@ class db
     private $pdo;
     public function __construct()
     {
-        // $dsn = 'mysql:dbname=gb_testmvc;host=mysql101.1gb.ru';
-        // $user = 'gb_testmvc';
-        // $password = '6adz8d65uiw';
-
-        // try {
-        //     $dbh = new \PDO($dsn, $user, $password);
-        // } catch (PDOException $e) {
-        //     echo 'Подключение не удалось: ' . $e->getMessage();
-        // }
-
-        // die;
-
         $opt = require __DIR__ . '/../settings.php';
         $dbOptions = $opt['db'];
         
