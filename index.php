@@ -3,7 +3,7 @@ session_start();
 header('X-XSS-Protection: 1');
 
 spl_autoload_register(function (string $className) {
-    require_once __DIR__ . '/src/' . $className . '.php';
+   require_once _DIR_ . '/src/' . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
 });
 
 $route = $_GET['route'] ?? '';
