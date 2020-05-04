@@ -11,7 +11,7 @@ class MainController
     private $view;
     public function __construct()
     {
-        $this->view = new View('src\templates');
+       $this->view = new View('src' .DIRECTORY_SEPARATOR. 'templates');
     }
     public function main()
     {
