@@ -15,15 +15,14 @@ class AuthorizationController extends MainController
     }
 
     public function main()
-    { $articles = ActivitieswithTasks::ShowAllTasks();
+    { 
+        $articles = ActivitieswithTasks::ShowAllTasks();
         if(($_SESSION['admin'] <> true)){
-        $this->view->renderHtml('auth.php');}
-
-
-
-        else{  $this->view->renderHtml('main.php', ['articles' => $articles]);
+        $this->view->renderHtml('auth.php');
+        } else{$this->view->renderHtml('main.php', ['articles' => $articles]);
         }
     }
+    
     public function logout()
     {
         unset($_SESSION['admin']);
@@ -32,6 +31,7 @@ class AuthorizationController extends MainController
         $this->view->renderHtml('main.php', ['articles' => $articles]);
 
     }
+    
     public function actionLogin()
     {
         $articles = ActivitieswithTasks::ShowAllTasks();
@@ -39,26 +39,21 @@ class AuthorizationController extends MainController
                 $login = $_POST['login'];
                 $password = $_POST['password'];
                 $admin = Authorization::AccessAdmin($login,$password);
-                    if($admin!=NULL)
-                     {
+                    if($admin!=NULL){
                         $_SESSION['admin'] = true;
                         $_SESSION['login_admin'] = $login;
                          header('Location: /');
                          $this->view->renderHtml('main.php', ['articles' => $articles]);
-                     }
-                    else
-                        {?>
+                    } else{?>
                             <script language="javascript">
-                            alert("Вы ввели неправильные данные");
-                            </script> <?php
-                        $this->view->renderHtml('main.php', ['articles' => $articles]);
-                        }
-            }
-            else
-            {
+                                alert("Вы ввели неправильные данные");
+                            </script> 
+                           <?php $this->view->renderHtml('main.php', ['articles' => $articles]);
+                    }
+            } else {
                 header('Location: /');
                 $this->view->renderHtml('main.php', ['articles' => $articles]);
             }
-        }
+    }
 }
 
